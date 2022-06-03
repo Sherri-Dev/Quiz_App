@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  ---pr-color: #1f1147;
+  ---pr-light: #1f1147b0;
+  ---sc-color: #32167c;
+  ---sc-light: #6949fd;
+  ---tr-color: #37e9bb;
+  ---tr-light: #37e9ba81;
+  ---success-color: rgb(0, 255, 0);
+  ---wrong-bg: rgba(255, 0, 0, 0.473);
+}
+
+/* BUTTONS */
+
+.btn {
+  font-family: inherit;
+  color: #ffffff;
+  background-color: var(---sc-light);
+  box-shadow: 1px 1px 3px var(---pr-color);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color, color 0.3s;
+}
+/*UTILITIES*/
+body {
+  font-family: "Nunito";
+  color: white;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  grid-auto-rows: 100%;
+  background-color: var(---sc-light);
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.inner-container {
+  background-color: #7a71d9;
+  padding: 2rem;
+  border-radius: 0.3rem;
+}
+.inner-container:last-child {
+  margin-top: 2rem;
+}
+.inner-container:last-child h2 {
+  color: var(---pr-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+input {
+  font-size: 1.3rem;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(---sc-light);
+  outline: none;
+  padding: 0.3rem;
+}
+input:focus {
+  border-color: var(---sc-color);
+}
+/******
+Content
+*******/
+#heading {
+  width: fit-content;
+  cursor: pointer;
+}
+#heading ion-icon {
+  color: var(---pr-color);
+}
+#side-bar {
+  min-height: 100vh;
+  background-color: var(---pr-color);
+}
+.container {
+  padding: 2%;
+}
+#sbj-selector {
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+select {
+  font-size: 1.3rem;
+  color: var(---sc-light);
+  height: fit-content;
+  background-color: var(---pr-color);
+  box-shadow: 1px 1px 2px var(---pr-color);
+  cursor: pointer;
+  outline: none;
+  border-radius: 0.3rem;
+}
+option {
+  font-size: 1.3rem;
+  border-radius: 0.3rem;
+}
+/***************
+INNER CONTAINER
+****************/
+#time-box {
+  color: var(---tr-color);
+  font-size: 1.3rem;
+  font-weight: 600;
+  background-color: var(---sc-light);
+  letter-spacing: 0.05em;
+  border-radius: 0.3rem;
+  margin-bottom: 0.4rem;
+  padding: 0.4rem;
+  display: none;
+}
+#question-container {
+  width: 100%;
+  justify-content: stretch;
+  margin-bottom: 2rem;
+}
+#time-container {
+  justify-content: right;
+}
+#question-container label,
+#time-container label {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(---pr-color);
+}
+#time-container input {
+  width: 5%;
+  color: var(---tr-color);
+}
+#question-container label {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(---pr-color);
+}
+#question-container input {
+  width: 92.3%;
+}
+#opts-container {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+.opt-container {
+  align-items: flex-end;
+  gap: 10px;
+}
+.opt-container label {
+  color: var(---sc-color);
+  font-weight: bold;
+}
+.opt {
+  font-size: 1rem;
+  width: 6rem;
+  padding: 0;
+}
+#ans {
+  color: var(---tr-color);
+  text-transform: uppercase;
+}
+
+.btn-container {
+  text-align: right;
+}
+.btn-pr {
+  font-size: 1.3rem;
+  padding: 0.5rem;
+}
+.btn-pr:hover {
+  color: var(---pr-color);
+}
+#del-all-btn {
+  display: none;
+}
+/********
+QUESTIONS
+*********/
+#questions-box {
+  margin-bottom: 1rem;
+  line-height: 2.5rem;
+}
+.del-btn {
+  color: red;
+  display: inline-flex;
+  vertical-align: text-bottom;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.del-btn:hover {
+  color: var(---pr-color);
+}
+.question {
+  font-size: 1.25rem;
+}
+.option,
+.ans {
+  font-size: 1rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.ans {
+  color: var(---tr-color);
+  text-transform: uppercase;
+  background-color: var(---pr-color);
+  border-radius: 0.3rem;
+  padding: 0 0.3rem;
+}
+.alert-box {
+  font-size: 1.2rem;
+  width: fit-content;
+  letter-spacing: 0.1em;
+  margin: auto;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.alert-box.danger-color {
+  opacity: 1;
+  background-color: var(---wrong-bg);
+}
+.alert-box.success-color {
+  opacity: 1;
+  background-color: var(---success-color);
+}

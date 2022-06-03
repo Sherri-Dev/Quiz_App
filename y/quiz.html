@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questions</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+  <body onload="showQuestion(0);showQuestionNumber();">
+    <div class="container flex">
+      <div class="inner-container">
+        <header class="header" id="questions-header">
+          <h3 id="title">Science Test</h3>
+          <h4 id="time-box"></h4>
+        </header>
+        <small id="question-num">07/10</small>
+        <div id="question-box">
+          <p id="question">What is the 6th planet in solar system?</p>
+          <li class="option flex" onclick="addActiveStatus(this)">
+            <span class="opt-num">01</span><span class="opt-text"></span>
+          </li>
+          <li class="option flex" onclick="addActiveStatus(this)">
+            <span class="opt-num">02</span><span class="opt-text"></span>
+          </li>
+          <li class="option flex" onclick="addActiveStatus(this)">
+            <span class="opt-num">03</span><span class="opt-text"></span>
+          </li>
+          <li class="option flex" onclick="addActiveStatus(this)">
+            <span class="opt-num">04</span><span class="opt-text"></span>
+          </li>
+        </div>
+        <div class="btn-container">
+          <button id="next-btn" class="btn btn-pr">
+            Next<ion-icon name="arrow-redo-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- Ion Icons -->
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+  ></script>
+  <script src="JS/app.js"></script>
+</html>

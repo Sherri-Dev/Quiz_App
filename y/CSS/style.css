@@ -1,0 +1,550 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* COLORS */
+
+:root {
+  ---pr-color: #1f1147;
+  ---pr-light: #1f1147b0;
+  ---sc-color: #32167c;
+  ---sc-light: #6949fd;
+  ---tr-color: #37e9bb;
+  ---tr-light: #37e9ba81;
+  ---success-color: rgb(0, 255, 0);
+  ---wrong-bg: rgba(255, 0, 0, 0.473);
+}
+
+/* BUTTONS */
+
+.btn {
+  font-family: inherit;
+  color: #ffffff;
+  background-color: var(---sc-light);
+  box-shadow: 1px 1px 3px var(---tr-color), -1px -1px 3px var(---tr-color);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color, color 0.3s;
+}
+
+.btn:hover {
+  color: var(---tr-color);
+  background-color: var(---sc-color);
+}
+.btn-pr {
+  font-size: 1.4rem;
+  box-shadow: 1px 1px 3px #9fb4f28a;
+  padding: 0.5rem 1rem;
+}
+#start-btn {
+  display: inline-block;
+  font-size: 1.2rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 0.49rem;
+  position: relative;
+  left: -1%;
+}
+
+#next-btn,
+#skip-btn {
+  display: inline-flex;
+  align-items: center;
+}
+
+#next-btn ion-icon,
+#skip-btn ion-icon {
+  font-size: 1.3rem;
+  margin-left: 0.3rem;
+  transition: 0.3s;
+}
+
+#next-btn:hover ion-icon {
+  transform: translateX(50%) scale(1.2);
+  color: var(---tr-color);
+}
+#skip-btn,
+#skipped-btn,
+#attempted-btn {
+  margin-right: 1rem;
+}
+#skipped-btn {
+  display: none;
+}
+#skip-btn:hover ion-icon {
+  transform: scale(1.2);
+  color: var(---tr-color);
+}
+#skipped-btn sup {
+  font-size: 0.85rem;
+  color: var(---tr-color);
+  padding: 0 0.3rem;
+  background-color: var(---sc-color);
+  border-radius: 50%;
+}
+#skipped-btn:hover sup {
+  color: white;
+  background-color: var(---sc-light);
+}
+#back-btn {
+  width: 2.7rem;
+  height: 2.7rem;
+  font-size: 1.3rem;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 1px 1px 3px #9fb4f28a;
+}
+#back-btn:hover ion-icon {
+  transform: translateX(-50%) scale(1.2);
+  color: var(---tr-color);
+  transition: color, transform 0.3s;
+}
+#try-again-btn {
+  display: flex;
+  align-items: center;
+  margin: 1rem auto 0 auto;
+}
+
+#try-again-btn ion-icon {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+}
+#try-again-btn:hover ion-icon {
+  transform: scale(1.2);
+}
+
+/* UTILITIES */
+
+.container {
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  overflow: auto;
+  font-family: "Nunito";
+  color: white;
+  background-color: var(---pr-color);
+  max-width: 900px;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 10px 1px var(---sc-light);
+  padding: 3%;
+  margin: auto;
+}
+.inner-container {
+  width: 100%;
+  position: relative;
+  padding: 0.1rem;
+}
+.header {
+  width: 100%;
+  margin-bottom: 4rem;
+  text-align: center;
+  position: relative;
+}
+
+.header #title {
+  display: inline-block;
+  color: var(---tr-color);
+}
+
+.header #time-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  letter-spacing: 0.2em;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+/*********
+Main Page
+**********/
+
+#main-container {
+  padding: 0;
+  justify-content: flex-start;
+}
+
+#logo-container {
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background: url("../Images/logo-bg.svg") repeat center center/contain;
+  background-color: var(---sc-color);
+  padding: 3rem 0rem;
+}
+
+#logo {
+  font-size: 7rem;
+  width: 8rem;
+  height: 8rem;
+  line-height: 8rem;
+  background: linear-gradient(var(---success-color), rgba(9, 112, 180, 0.945));
+  box-shadow: 8px 8px 15px var(---success-color);
+  border-radius: 0.5rem;
+  border: 5px solid var(---sc-light);
+}
+
+#tagline {
+  margin-top: 2rem;
+}
+
+#body-container {
+  width: 100%;
+  flex-direction: column;
+  height: 100%;
+  z-index: 1;
+  background: url("../Images/index-bg.svg") center center/cover;
+  position: relative;
+}
+
+#body-container::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: url("../Images/index-bg.svg") center center/cover;
+  position: absolute;
+  top: -60%;
+  left: 0%;
+  z-index: -1;
+}
+
+#alert-box {
+  margin: 0 auto 0.5rem auto;
+  width: fit-content;
+  color: red;
+  z-index: 1;
+  padding-top: 8rem;
+}
+
+#form-container {
+  justify-content: center;
+  width: 100%;
+}
+
+#user-name {
+  font-size: 1.3rem;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  box-shadow: 1px 1px 5px var(---tr-color), -1px -1px 5px var(---tr-color);
+}
+
+#user-name:focus {
+  outline: 2px solid var(---success-color);
+}
+
+/*************
+Subjectss Page
+**************/
+
+#subjects-container {
+  width: 100%;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-auto-rows: minmax(10rem, auto);
+}
+
+#subjects-h {
+  position: relative;
+  text-align: center;
+  color: var(---success-color);
+  margin-bottom: 3.5rem;
+}
+
+#subjects-h::before {
+  content: "";
+  display: inline-block;
+  width: 4rem;
+  height: 0.5rem;
+  background-color: var(---tr-color);
+  border-radius: 0.5rem;
+  position: absolute;
+  left: 33%;
+  bottom: -20%;
+}
+
+.subject-item {
+  justify-content: center;
+  border-radius: 2.5rem;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  cursor: pointer;
+  position: relative;
+}
+
+.subject-item::before {
+  content: "Hello";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../Images/sbj-bg.svg") no-repeat center center/cover;
+  z-index: -1;
+}
+
+.sbj1-bg {
+  background: rgb(235, 238, 51);
+  background: linear-gradient(
+    180deg,
+    rgba(235, 238, 51, 1) 31%,
+    rgba(245, 182, 0, 1) 100%
+  );
+}
+
+.sbj2-bg {
+  background: rgb(51, 238, 59);
+  background: linear-gradient(
+    180deg,
+    rgba(51, 238, 59, 1) 0%,
+    rgba(138, 245, 0, 1) 100%
+  );
+}
+
+.sbj3-bg {
+  background: rgb(242, 0, 192);
+  background: linear-gradient(
+    180deg,
+    rgba(242, 0, 192, 1) 0%,
+    rgba(169, 0, 245, 1) 100%
+  );
+}
+
+.sbj4-bg {
+  background: rgb(0, 99, 242);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 99, 242, 1) 0%,
+    rgba(0, 245, 134, 1) 100%
+  );
+}
+/********
+PRELOADER
+*********/
+.loader-container {
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(---tr-light);
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: none;
+}
+
+.loader {
+  transform-origin: bottom;
+  display: inline-block;
+  animation: rotate 2s infinite;
+}
+
+.loader-item {
+  display: inline-block;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: bubble 1s infinite;
+}
+.loader-item:nth-child(1) {
+  background-color: var(---sc-color);
+  box-shadow: 1px 1px 3px var(---sc-light), -1px -1px 3px var(---sc-light);
+}
+
+.loader-item:nth-child(2) {
+  animation-delay: 0.4s;
+  margin-left: -0.2rem;
+  background-color: var(---success-color);
+  box-shadow: 1px 1px 3px rgb(0, 255, 13), -1px -1px 3px rgb(0, 255, 0);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes bubble {
+  to {
+    transform: scale(1);
+  }
+}
+/*************
+Questions Page
+**************/
+/* Question Box */
+#questions-header {
+  z-index: 10;
+}
+#question-num,
+#Squestion-num {
+  align-self: flex-start;
+  color: var(---tr-color);
+}
+
+#question,
+#Squestion {
+  width: 100%;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.option,
+.Soption {
+  justify-content: flex-start;
+  width: 70%;
+  font-size: 1.4rem;
+  list-style: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.option ion-icon,
+.Soption ion-icon {
+  font-size: 1.8rem;
+  position: absolute;
+  left: 90%;
+}
+
+#correct-mark {
+  color: var(---success-color);
+}
+
+#wrong-mark {
+  color: red;
+}
+
+.true-active {
+  background-color: var(---tr-light);
+}
+
+.false-active {
+  background-color: var(---wrong-bg);
+}
+
+.option:first-child,
+.Soption:first-child {
+  margin-top: 2rem;
+}
+
+.option .opt-num,
+.Soption .Sopt-num {
+  font-size: 1rem;
+  background-color: var(---sc-light);
+  padding: 0.5rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.btn-container {
+  text-align: right;
+}
+/***SKIPPED QUESTIONS***/
+#sq-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  z-index: -1;
+}
+/**********
+Result Page
+***********/
+
+#result-header {
+  justify-content: space-between;
+  width: 52%;
+}
+#correct-ans-num {
+  color: var(---tr-color);
+  margin: 0.5rem 0 2.5rem 0;
+}
+
+#result-container {
+  text-align: center;
+  background-color: var(---sc-light);
+  background-image: url("../result-bg.png");
+  background-position: center;
+  border-radius: 0.5rem;
+  position: relative;
+  padding: 6%;
+}
+
+#result-remarks {
+  color: yellow;
+  margin-bottom: 0.7rem;
+}
+
+#obt-num {
+  display: inline-block;
+  font-size: 3rem;
+  width: 10rem;
+  height: 10rem;
+  background-color: var(---success-color);
+  line-height: 10rem;
+  border-radius: 50%;
+  margin-top: 1.5rem;
+}
+
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 13px;
+  }
+  .container {
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+@media only screen and (min-width: 550px) {
+  .option:hover {
+    background-color: #37e9ba69;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .container {
+    margin: -1.5rem auto 0 auto;
+  }
+  #form-container {
+    font-size: 0.8rem;
+    padding: 0 1rem 1rem 1rem;
+  }
+  .option {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  #form-container {
+    flex-direction: column;
+  }
+  #user-name {
+    width: 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  #start-btn {
+    width: 100%;
+    border-radius: 0.3rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    left: 0;
+  }
+  #correct-mark,
+  #wrong-mark {
+    margin-left: -1rem;
+  }
+}
